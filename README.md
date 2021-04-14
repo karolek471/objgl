@@ -22,16 +22,34 @@ To free the memory call ```objgl_delete(ObjGLData *data)```
 * Does not generate normals if not present in file (just for now)
 * Can't process OBJs with multiple objects in them (I think just for now, you can hack it using materials)
 * Spaghetti code
+* No handling of .mtl files
 
 ## Data structures
-```ObjGLData```
-* ```float *data``` - pointer to an array of interleaved vertex attributes (position, [texcoord], [normal], position, [texcoord], [normal] ...)
-* ```unsigned int *indices``` - pointer to an array of indices for use with ```glDrawElements```
-* ```objglMaterial *materials``` - pointer to an array of materials
-* ```unsigned int```
-*  * ```numIndices``` - total number of indices in the array
-*  * ```numVertices``` - total number of unique indices (size of ```*data``` = numVertices * vertSize)
-*  * ```vertSize``` - size of an one vertex in bytes (12, 20, 24 or 32)
-*  * ```numMaterials``` - number of materials used
-*  ```unsigned char hasNormals``` - boolean, whether the normal data is present
-*  ```unsigned char hasTexCoords``` - boolean, whether the UV data is present
+```struct ObjGLData```
+* `float *data` - pointer to an array of interleaved vertex attributes (position, [texcoord], [normal], position, [texcoord], [normal] ...)
+* `unsigned int *indices` - pointer to an array of indices for use with ```glDrawElements```
+* `objglMaterial *materials` - pointer to an array of materials
+* `unsigned int`
+*  * `numIndices` - total number of indices in the array
+*  * `numVertices` - total number of unique indices (size of ```*data``` = numVertices * vertSize)
+*  * `vertSize` - size of an one vertex in bytes (12, 20, 24 or 32)
+*  * `numMaterials` - number of materials used
+*  `unsigned char hasNormals` - boolean, whether the normal data is present
+*  `unsigned char hasTexCoords` - boolean, whether the UV data is present
+<br/><br/>
+`struct objglMaterial`
+* `unsigned int *indices` - pointer to the indices with that material, a part of ObjGLData's indices
+* `unsigned int len` - number of indices with that material
+* `char* name` - null terminated string representing a name of the material
+<br/><br/>
+### How do materials work?
+Really simply - let's say we have a function `drawIndices(float *vertexData, unsigned int *indices, unsigned int numIndices)` and our model has 3 materials:
+First we read the OBJ: <br/>
+```
+char* content = readtextfile("path/to/our/objfile.obj");
+ObjGLData objdata = objgl_loadObj(content);
+```
+And now let's draw the entire model:
+`drawIndices(objdata.data, objdata.indices, objdata.numIndices)` and here it is! 
+Now let's just render the first material:
+`drawIndices(objdata.data, objdata.materials[0].indices, objdata.materials[0].len)` once again, here it is, however now we see only the parts with the first material.
