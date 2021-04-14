@@ -53,3 +53,8 @@ And now let's draw the entire model:
 `drawIndices(objdata.data, objdata.indices, objdata.numIndices)` and here it is! 
 Now let's just render the first material:
 `drawIndices(objdata.data, objdata.materials[0].indices, objdata.materials[0].len)` once again, here it is, however now we see only the parts with the first material.
+
+## Why is it like that?
+It feels intuitive to me - if you're using an OpenGL OBJ loader, probably you need a data suitable for OpenGL, thus vertex parameter interleaving.
+Probably you want to use different shader for different materials, thus such material system and if you don't care about materials,
+you just don't care about them in code and just render the model in it's entirety. 
