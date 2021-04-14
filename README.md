@@ -57,4 +57,7 @@ Now let's just render the first material:
 ## Why is it like that?
 It feels intuitive to me - if you're using an OpenGL OBJ loader, probably you need a data suitable for OpenGL, thus vertex parameter interleaving.
 Probably you want to use different shader for different materials, thus such material system and if you don't care about materials,
-you just don't care about them in code and just render the model in it's entirety. 
+you just don't care about them in code and just render the model in it's entirety.
+
+## Can I use it for...
+Yes, you can. Use it however you want, it's under MIT license so go ahead and read it's "rules". The best reward for me is someone actually using my code, not gotoshaming me for QUESTIONABLE coding style. I just want it to be fast. I always use this type of parsing whenever I need to parse a file, because it's quick, easy for me to understand, no string-splitting bloat, just you and code. Harmony.
