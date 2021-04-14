@@ -1,3 +1,4 @@
+# OBJ GL Loader
 # Quite fast .OBJ loader written in C
 
 ## How to use it
