@@ -466,7 +466,7 @@ ObjGLData objgl_loadObj(const char* obj){
 						curMaterial.hash = hash;
 						curMaterial.name = name;
 
-						if(numMaterials > 1){
+						if(numMaterials > 0){
 							curMaterial.resLen = 64;
 							curMaterial.len = 0;
 							curMaterial.pointer = OBJGL_ALLOC(sizeof(objface) * curMaterial.resLen);
