@@ -1,5 +1,5 @@
 # OBJ GL Loader
-# Quite fast .OBJ loader written in C
+## Quite fast .OBJ loader written in C
 
 ## How to use it
 Put ```.c``` and ```.h``` files in Your project and ```include``` them.
