@@ -26,7 +26,7 @@ objgl2Data objd = objgl2_readobj(&strinfo);
 ```
 Here the stream is created from an already existing buffer.
 <br/>
-If, for some reason, you don't want to have a default C FILE streaming implementation just ```#define OBJGL_FSTREAM_IMPL 0``` before
+If, for some reason, you don't want to have a default C FILE streaming implementation just `#define OBJGL_FSTREAM_IMPL 0` before
 including the header file but in that case you'll need to implement own file streaming.
 
 ## Features
@@ -36,11 +36,11 @@ including the header file but in that case you'll need to implement own file str
 * Puts the data in an OpenGL-friendly way (interleaved vertex attributes, indices)
 * OpenGL-friendly, easy to use material system
 * Uses a hash table to find unique vertices
-* Made for indexed rendering (```glDrawElements```)
+* Made for indexed rendering (`glDrawElements`)
 * Triangulates the faces if needed
 * NEGATIVE INDICES!!! Yaaaay!
-* Smooth shading, flat shading, auto-smooth, it's not a problem, just remember to generate the normals to the file
-The file used for tests was ```vokselia_spawn.obj``` from https://casual-effects.com/data/
+* Smooth shading, flat shading, auto-smooth, it's not a problem, just remember to generate the normals to the file<br/><br/>
+The file used for tests was `vokselia_spawn.obj` from https://casual-effects.com/data/
 ## Not-so-much features
 * Does not support multiple objects in one file (at the moment, I'll fix it)
 * Uses "triangle fan" triangulation algorithm (glitches may appear if the face is not convex)
@@ -49,7 +49,7 @@ The file used for tests was ```vokselia_spawn.obj``` from https://casual-effects
 
 ## Streams and buffers
 As I said above, there are two ways of "feeding" the parser with a data - a file stream or a buffer stream.
-It's important to note that the buffer stream is not really a stream.
+It's important to note that the buffer stream is not really a stream.<br/><br/>
 When to use file stream over the buffer stream? Sometimes you deal with a large file, hundreds of megabytes. Malloc might not be able
 to allocate that much memory or there are other reasons not to allocate that much at once, so the idea of streaming comes in handy.
 Instead of reading the entire file at once and storing the result in one big buffer the program reads n bytes of data from a file, puts it into
@@ -69,17 +69,17 @@ Now let's just render the first material:
 
 ## Implementing your own file streamer
 If you think you can do better than me (yes, probably you can) or you just don't want to use the C way of reading files, you can make your own stream reader.
-The stream reading function pointer looks like that: ```uint_least32_t (*objgl2_streamreader_ptr)(objgl2StreamInfo*)``` and the declaration of the default
-file streamer is ```uint_least32_t objgl2_filestreamreader(objgl2StreamInfo* info)```.
+The stream reading function pointer looks like that: `uint_least32_t (*objgl2_streamreader_ptr)(objgl2StreamInfo*)` and the declaration of the default
+file streamer is `uint_least32_t objgl2_filestreamreader(objgl2StreamInfo* info)`.
 Only four requirements are:
 * The streamer must return the buffer length (buffer length is not necessarily equal to bufferLen)
 * The streamer must not read more bytes than the bufferSize
 * The streamer must read whole lines, thus it will most likely read fewer bytes than the bufferLen, because it cannot read more than that
 * The streamer must set the eof field to a non-zero value if the end of the file is reached (set the eof to true basicaly).
-My implementation does it this way: it reads as many bytes (= bufferLen) as it can with ```fread```. It goes back from the end of the buffer until it sees the ```\n```. If the buffer already ends with ```\n``` then the length does not change. It returns the length of the buffer (distance from the start of the buffer to the last ```\n```). It's as simple as that. The buffer reader is even simple - it does nothing.
+My implementation does it this way: it reads as many bytes (= bufferLen) as it can with `fread`. It goes back from the end of the buffer until it sees the `\n`. If the buffer already ends with `\n` then the length does not change. It returns the length of the buffer (distance from the start of the buffer to the last `\n`). It's as simple as that. The buffer reader is even simple - it does nothing.
 <br/>
-```objgl2_init_bufferstream``` and ```objgl2_init_filestream``` are there just to facilitate the creation of the stream info struct.
-You'll need to initialize your stream info struct yourself or just change the ```objgl2_streamreader_ptr function``` after initializing the struct.
+`objgl2_init_bufferstream` and `objgl2_init_filestream` are there just to facilitate the creation of the stream info struct.
+You'll need to initialize your stream info struct yourself or just change the `objgl2_streamreader_ptr function` after initializing the struct.
 The code speaks louder than my convoluted descriptions, so please look it up.
 
 ## Why is it like that?
