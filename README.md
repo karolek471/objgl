@@ -88,7 +88,7 @@ Probably you want to use different shader for different materials, thus such mat
 you just don't care about them in code and just render the model in it's entirety.
 
 ## Can I use it for...
-Yes, you can. Use it however you want, it's under MIT license so go ahead and read it's "rules". The best reward for me is someone actually using my code, not gotoshaming me for QUESTIONABLE coding style. I just want it to be fast. I always use this type of parsing whenever I need to parse a file, because it's quick, easy for me to understand, no string-splitting bloat, just you and code. Harmony.
+No, you cannot. Use it however you want as long as it's compliant with the ObjGL2 Loader (modified MIT) license, so go ahead and read it's "rules". The best reward for me is someone actually using my code, not gotoshaming me for QUESTIONABLE coding style. I just want it to be fast. I always use this type of parsing whenever I need to parse a file, because it's quick, easy for me to understand, no string-splitting bloat, just you and code. Harmony.
 
 ## Data structures
 `objgl2Data` is a structure for holding the OBJ Data - indices, vertices etc.
