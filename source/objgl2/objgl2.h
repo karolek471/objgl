@@ -1,6 +1,9 @@
 #ifndef OBJGL2_H_
 #define OBJGL2_H_
 
+#define OBJGL_FSTREAM 1
+#define OBJGL_BSTREAM 0
+
 #ifndef OBJGL_FSTREAM_IMPL
 #define OBJGL_FSTREAM_IMPL 1
 #endif

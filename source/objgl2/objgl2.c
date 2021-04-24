@@ -1,10 +1,7 @@
 #include "objgl2.h"
 #include <stdlib.h>
 
-#define OBJGL_DEBUG 0
-
-#define OBJGL_FSTREAM 1
-#define OBJGL_BSTREAM 0
+#define OBJGL_DEBUG 1
 
 #if OBJGL_DEBUG
 static uint_fast32_t _debugmemory;
@@ -389,18 +386,18 @@ objgl2Data objgl2_readobj(objgl2StreamInfo *strinfoptr){
 	uint_least32_t bufferLen = streamreader(&strinfo);
 	uint_fast32_t buffPos = strinfo.buffOffset;
 
-	objinfo_internal info = (const objinfo_internal){0, 0, 0, 64, 64, 64};
+	objinfo_internal info = (const objinfo_internal){0, 0, 0, 256, 256, 256};
 
 	objgl_vec3 *positions = (objgl_vec3*)objgl_alloc(sizeof(objgl_vec3) * info.resPositions);
 	objgl_vec3 *normals = (objgl_vec3*)objgl_alloc(sizeof(objgl_vec3) * info.resNormals);
 	objgl_vec2 *texcoords = (objgl_vec2*)objgl_alloc(sizeof(objgl_vec2) * info.resTexcoords);
 
 	objmaterial_internal curMaterial = (const objmaterial_internal){0};
-	curMaterial.resIndices = 64;
+	curMaterial.resIndices = 256;
 	curMaterial.numIndices = 0;
 	curMaterial.indices = (objfacevert*)objgl_alloc(sizeof(objfacevert) * curMaterial.resIndices);
 
-	uint_fast32_t resMaterials = 8;
+	uint_fast32_t resMaterials = 64;
 	uint_fast32_t numMaterials = 1;
 	objmaterial_internal *materials = (objmaterial_internal*)objgl_alloc(sizeof(objmaterial_internal) * resMaterials);
 	materials[0] = curMaterial;
@@ -539,7 +536,7 @@ objgl2Data objgl2_readobj(objgl2StreamInfo *strinfoptr){
 						}
 
 						curMaterial.hash = hash;
-						curMaterial.resIndices = 64;
+						curMaterial.resIndices = 256;
 						curMaterial.numIndices = 0;
 						curMaterial.indices = (objfacevert*)objgl_alloc(sizeof(objfacevert) * curMaterial.resIndices);
 						curMaterial.name = (char*)objgl_alloc(matnamelen + 1);
