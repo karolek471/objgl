@@ -102,7 +102,7 @@ Yes, you can. Use it however you want, it's under MIT license so go ahead and re
 * `unsigned char hasNormals` - (boolean) whether the normals are present in the vertex attributes
 * `unsigned char hasTexCoords` - (boolean) whether the texcoords are present in the vertex attributes
 * `char *name` - (might be deleted in the future) the OBJ name, taken from the first `o name` declaration in the file, it's not important
-<br/>
+
 `objgl2StreamInfo` is a structure for holding the stream data
 * `uint_least64_t fOffset` - offset from the beginning of the file, used by `fread` for fetching the chunks of data
 * `uint_least32_t bufferLen` - the malloced size of a buffer, maximal amount of bytes to read from the file to the buffer at once
@@ -111,7 +111,7 @@ Yes, you can. Use it however you want, it's under MIT license so go ahead and re
 * `char* filename` - null terminated file name and path, ex. `/home/obj/vokselia_spawn.obj`
 * `char eof` - End of the file flag. Needs to be set by the stream reader if the EOF is reached
 * `char type` - type of the stream, can be `OBJGL_FSTREAM` or `OBJGL_BSTREAM`. Used by `objgl2_deletestream`
-<br/>
+
 `objgl2Material` is a structure for holding the material data
 * `uint_least32_t *indices` - pointer to the face indices with that material, it's some offset of objgl2Data's `*indices`, so the memory is shared
 * `uint_least32_t len` - how many indices there are in that material. Indices of a specific material are contiguous.
