@@ -1,7 +1,7 @@
 #include "objgl2.h"
 #include <stdlib.h>
 
-#define OBJGL_DEBUG 1
+#define OBJGL_DEBUG 0
 
 #if OBJGL_DEBUG
 static uint_fast32_t _debugmemory;
