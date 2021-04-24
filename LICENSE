@@ -12,7 +12,9 @@ The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
 Commercial use is only permited if the provided code is only a part of the software responsible for loading the Wavefront OBJ Format.
-For commercial use my software must be less than 36.666% of the total code responsible for file format loading (counted in lines, excluding comments, multiline array initializers and preprocessor statements, given the line layout in my software was not altered).
+For commercial use my software must be less than 36.666% of the total code responsible for file format loading 
+(counted in lines, excluding comments, multiline array initializers and preprocessor statements, 
+given the line layout in my software was not altered).
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
