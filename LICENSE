@@ -1,16 +1,17 @@
-MIT License
+ObjGL2 Loader license (modified MIT License)
 
 Copyright (c) 2021 karolek471
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
+to use, copy, modify, merge, publish, distribute, sublicense, copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
+Commercial use is only permited if the provided code is only a part of the software responsible for loading the Wavefront OBJ Format.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -19,3 +20,15 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+To put it simply:
+- You may modify and redistribute this code (non-commercialy)
+- You must not claim you're the author of this software
+- You may sell your product if the software provided by me, karolek471, is a minor part of the program so: game engines, games, 3D modelling software
+- You must not use my code commercialy if the software provided by me, karolek471, is a major part of the program so: OBJ viewer, OBJ loader
+
+To put it even simpler:
+If your program is only capable of loading the .obj files using my software, and that's it, you can't use it commercialy
+If your program is capable of loading all kinds of formats, including .obj using my software - it's okay, you can use it commercialy.
+
+For commercial use my software must be less than 36.666% of the total code responsible for file format loading (counted in lines, excluding comments, multiline array initializers and preprocessor statements, given the line layout in my software was not altered).
